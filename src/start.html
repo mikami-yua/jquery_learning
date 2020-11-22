@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script type="text/javascript">
+            //单机按钮，获取文本框的value值
+            function fun1() {
+                //通过js中的id获取dom对象
+                var obj = document.getElementById("txt1");
+                alert(obj.value);
+            }
+            function fun2() {
+                //var obj = document.getElementById("txt2");
+                //var obj=getDomObj("txt2");
+                var obj=$("txt2");//$ 在js中是一个合法的函数名称
+                alert(obj.value);
+            }
+            //自定义方法，获取js中的dom对象
+            function getDomObj(domid) {
+                var obj = document.getElementById(domid);
+                return obj;
+            }
+            function $(domid) {
+                var obj = document.getElementById(domid);
+                return obj;
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="txt1" value="我是txt1" /><br>
+        <input type="text" id="txt2" value="我是txt2" /><br>
+        <input type="button" value="单击按钮显示1" onclick="fun1()"><br />
+        <input type="button" value="单击按钮显示2" onclick="fun2()"><br />
+
+    </body>
+</html>
