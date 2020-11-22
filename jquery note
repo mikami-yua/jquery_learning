@@ -1,1 +1,23 @@
 JQuery
+
+1.JQuery是js库
+    库：相当于java的工具类，库是用来存放东西的。JQuery是存放js代码的地方，里面放的是js代码写的很多函数。为了简化js代码操作DOM
+    write less，do more
+
+2.DOM对象和jQuery对象
+    DOM对象：用js语法创建的对象称为DOM对象，也就是js对象
+        var obj=document.getElementById("t"); obj就是DOM对象，也叫做js对象
+    jQuery对象：使用jQuery语法表示的对象都叫jquery对象。【注意】jQuery表示的对象都是数组
+        var jobj=$("#txt1"); jobj就是使用jQuery语法表示的对象，也就是jQuery对象，它是一个数组。数组中只有一个值
+
+    两类对象可以相互转换的
+        语法：
+            $(dom对象) dom对象转换为jQuery
+            从数组中获取第一个对象，第一个对象就是dom对象，使用[0]或者get（0） jQuery转dom
+        目的：
+            使用对象的方法或属性，是dom对象时可以使用dom对象的属性或方法。是jQuery对象可以使用jQuery的方法
+        规范：
+            jQuery对象为了和dom对象在命名上区别，习惯上jQuery对象名以$开头
+
+3.选择器：就是一个字符串，用来定位dom对象的。定位了dom对象就能通过jQuery函数操作dom
+    常用选择器：
