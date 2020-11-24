@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>表单选择器</title>
+        <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+        <script type="text/javascript">
+            function fun1() {
+                //使用表单选择器
+                var obj1 = $(":text");
+                //使用jQuery中改变样式的函数
+                alert(obj1.val());
+            }
+            /*
+            使用val（）必须保证调用者必须是jQuery对象
+             */
+            function fun2() {
+                var obj2=$(":radio");//数组中两个元素
+                for (var i=0;i<obj2.length;i++){
+                    var dom=obj2[i];
+                    alert(dom.value);
+                }
+            }
+            function fun3() {
+                var obj3=$(":checkbox");
+                for (var i=0;i<obj3.length;i++){
+                    var dom=obj3[i];
+                    //alert(dom.value);
+                    //使用jQuery的val函数
+                    //1.获取jQuery对象
+                    var jobj = $(dom);
+                    alert(jobj.val());
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" value="我是type=text"><br>
+        <input type="radio" value="man">man<br>
+        <input type="radio" value="woman">woman<br>
+        <input type="checkbox" value="bike">骑车<br>
+        <input type="checkbox" value="football">足球<br>
+        <input type="checkbox" value="music">音乐<br>
+        <input type="button" value="读取text值" onclick="fun1()"><br>
+        <input type="button" value="读取radio值" onclick="fun2()"><br>
+        <input type="button" value="读取checkbox值" onclick="fun3()"><br>
+    </body>
+</html>
