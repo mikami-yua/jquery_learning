@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>过滤器</title>
+        <style>
+            div{
+                background: gray;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+        <script type="text/javascript">
+            /*
+            $(document).ready(函数)：当页面中的dom对象加载成功后，会执行ready
+            相当于onload（）
+             */
+            $(function () {
+                //当页面dom加载后，给对象绑定事件，以为此时btn对象已经在内存中创建好了，才能使用
+                $("#btn1").click(function () {
+                    //get all abled text
+                    var obj =$(":text:enabled");
+                    //set dom objects' value  in jquery-arrry
+                    obj.val("hello")
+                })
+
+                $("#btn2").click(function () {
+                    var obj=$(":checkbox:checked");
+                    for (var i=0;i<obj.length;i++){
+                        //alert(obj[i].value);
+                        alert($(obj[i]).val())
+                    }
+                })
+
+                $("#btn3").click(function () {
+                    var obj=$("select>option:selected");
+                    alert(obj.val());
+                })
+
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" id="text1" value="text1"><br>
+        <input type="text" id="text2" value="text2" disabled="true"><br>
+        <input type="text" id="text3" value="text3"><br>
+        <input type="text" id="text4" value="text4" disabled><br>
+        <br>
+        <input type="checkbox" value="swim">swim<br>
+        <input type="checkbox" value="exercise" checked="true">exercise<br>
+        <input type="checkbox" value="game" checked>game<br>
+        <br>
+        <select id="language">
+            <option value="java">java</option>
+            <option value="go" selected>go</option>
+            <option value="python">python</option>
+        </select>
+        <br>
+        <input type="button" value="set all abled text as hello" id="btn1"><br>
+        <button id="btn2">show values of checked checkbox</button><br><!--same as: input type=button-->
+        <button id="btn3">show values of selected select</button>
+    </body>
+</html>
