@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>第一组函数的使用</title>
+        <style type="text/css">
+            div{
+                background: blue;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+        <script type="text/javascript">
+            //在dom对象创建好后，绑定事件
+            $(function () {
+                $("#btn1").click(function () {
+                    var text = $(":text").val();//无参形式：读取数组中第一个dom对象的value值
+                    alert(text);
+                })
+
+                $("#btn2").click(function () {
+                    var textarray=$(":text").val("三国");
+                })
+
+                $("#btn3").click(function () {
+                    //获取div
+                    var alltext=$("div").text();
+                    alert(alltext);
+                })
+
+                $("#btn4").click(function () {
+                    //获取div
+                    var alltext=$("div").text("新对div文本内容");
+                })
+
+                $("#btn5").click(function () {
+                    //读取指定属性的值
+                    alert($("img").attr("src"));
+                })
+
+                $("#btn6").click(function () {
+                    //设置指定属性的值
+                    alert($("img").attr("src","img/2.jpg"));
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" value="刘备"><br>
+        <input type="text" value="关羽"><br>
+        <input type="text" value="张飞"><br>
+        <div>1.我是第一个div</div>
+        <div>2.我是第二个div</div>
+        <div>3.我是第三个div</div>
+        <br>
+        <img src="img/1.jpg" id="img1"><br>
+        <input type="button" value="获取第一个文本框的值" id="btn1"><br>
+        <input type="button" value="给所有文本框赋新值" id="btn2"><br>
+        <input type="button" value="获取div的所有文本值" id="btn3"><br>
+        <input type="button" value="设置div的文本值" id="btn4"><br>
+        <input type="button" value="读取src属性的值" id="btn5"><br>
+        <input type="button" value="设置src属性的值" id="btn6"><br>
+    </body>
+</html>
