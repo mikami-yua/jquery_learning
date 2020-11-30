@@ -58,7 +58,37 @@ JQuery
         $(选择器).attr("属性名")：读取dom数组第一个对象的属性值
         $(选择器).attr("属性名","值")：对数组中所有的dom对象的属性设置为新的值
 
-10.jQuery中给dom对象绑定事件
+8.第二组函数
+    remove（）
+        $(选择器).remove()
+        数组中所有dom对象连同其子对象一并删除
+    empty（）
+        $(选择器).empty()
+        将数组中所有dom对象的子对象删除
+    append()
+        $(选择器).append("<div>动态添加</div>")
+        为数组中所有dom添加子对象
+    html()：设置或返回冤死的内容（innerHtml）
+        $(选择器).html():无参，获取dom数组第一个元素的内容
+        $(选择器).html(值):有参，设置dom的对象所有元素的内容
+    each（）【重要】
+        对数组，json，dom等数组进行遍历处理，对每个元素调用一次函数
+        语法1：
+            $.each(要遍历的对象，function(index,element){处理程序})//表示使用jQuery的each，循环数组，每个数组成员都会执行后面的处理函数
+            $相当于类名
+            .each相当于类中的静态方法
+
+            ps.
+            var arr={1,2,3}
+            function shuchu(index,element){
+
+            }
+        语法2：循环jQuery对象，jQuery对象就是dom数组
+            jquery对象.each(function(index,element){处理程序})
+        index：数组下标
+        element：数组中的对象
+
+9.jQuery中给dom对象绑定事件
     1.$(选择器).事件名称（事件的处理函数）
         $(选择器):定位dom对象，dom对象可以有多个
         事件名称：js事件去掉on
@@ -67,3 +97,46 @@ JQuery
             $("#btn").click(function(){
                 alert("按钮被点击")
             })
+    2. on事件绑定
+        $(选择器).on（事件名称，事件的处理函数）
+        事件名称就是js事件中去掉on的部分
+        $("#btn").on("click",function(){
+            alert("按钮被点击")
+        })
+
+10.使用jQuery函数实现Ajax的处理
+    没有jQuery之前使用异步对象，4步
+    jQuery简化了Ajax的处理使用三个函数
+        1.$.ajax():jquery中实现Ajax的核心函数
+        2.$.post():使用post方式做Ajax请求
+        3.$.get():使用get方式做ajax
+    $.post()和$.get()，内部都是使用的$.ajax()
+
+    $.ajax()的使用：
+        函数的参数表示：请求的url，请求的方式，参数值等信息。$.ajax()参数是个json的结构
+        ps：$.ajax({名称：值，名称：值。。。})
+            $.ajax({async：true，
+                    contentType:"application/json",
+                    data:{name:"lisi",age:20},
+                    dataType:json,
+                    error:function(){请求出现错误时执行的函数}，
+                    success:function(data){
+                        //data就是responceText，时jQuery处理后的数据
+                    }，
+                    url:"bmiajax",
+                    type："get"
+                    })
+        参数说明
+            async：布尔类型，默认true，表示是异步请求的（和原教旨的Ajax  xmlhttp.open(get,url,true)一样）可以不写
+            contentType：一个字符串，表示从浏览器发送给服务器参数的类型。可以不写
+                表示请求的参数是json格式的，可以写application/json
+            data:可以是字符串可以是数组可以是json，表示请求的参数和参数值。常用json格式
+            dataType:表示期望从服务器端返回的数据格式，可选：xml，html，text，json
+            error:请求执行错误是执行的函数
+                error:function(){请求发生错误时执行的函数}
+            success:请求成功，从服务器端返回数据，会执行success指定的函数（和原教旨 readyState==4 && status==200时）
+            url：请求地址
+            type:请求方式，get/post 默认get
+
+            主要使用：url data dataType success
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>第一组函数的使用</title>
+        <style type="text/css">
+            div{
+                background: blue;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+        <script type="text/javascript">
+            //在dom对象创建好后，绑定事件
+            $(function () {
+                $("#btn1").click(function () {
+                    //使用remove，删除父子所有的dom对象
+                    $("select").remove();
+                })
+
+                $("#btn2").click(function () {
+                    //使用empty，删除子所有的dom对象
+                    $("select").empty();
+                })
+
+                $("#btn3").click(function () {
+                    //使用APPEND，增加dom对象
+                    //$("#father").append("<input type='button' value='我是新增加的按钮'>");
+                    //增加一个表格
+                    $("#father").append("<table border=1><tr><td>第一列</td><td>第二列</td></tr></table>")
+                })
+
+                $("#btn4").click(function () {
+                    //使用html，获取数组中第一个dom对象的文本值(innerhtml)
+                    //alert($("span").text());//我是mysql数据库我是jdbc
+                    alert($("span").html());//我是mysql<b>数据库</b>
+                })
+
+                $("#btn5").click(function () {
+                    //使用html，设置dom对象的文本值(innerhtml)
+                    $("span").html("这是新的<b>数据</b>");//我是mysql<b>数据库</b>
+                })
+
+                $("#btn6").click(function () {
+                    //循环普通数组，非dom数组
+                    var arr=[1,2,3];
+                    $.each(arr,function (index,element) {
+                        alert("循环变量"+index+"======"+element);
+                    })
+                })
+
+                $("#btn7").click(function () {
+                    //循环json数组
+                    var arr={"name":"zhangsan","age":20};
+                    $.each(arr,function (i,n) {
+                        alert("i是key"+i+" ，n是值"+n);
+                    })
+                })
+
+                $("#btn8").click(function () {
+                    //循环dom数组
+                    var arr=$(":text");
+                    $.each(arr,function (i,n) {
+                        alert("i是"+i+" ，n是dom对象"+n.value);
+                    })
+                })
+
+                $("#btn9").click(function () {
+                    //循环jQuery对象   $(":text")这就是jQuery对象
+                    $(":text").each(function (i,n) {
+                        alert("i="+i+" ,n="+n.value);
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <select>
+            <option value="老虎">老虎</option>
+            <option value="狮子">狮子</option>
+            <option value="花豹">花豹</option>
+        </select>
+        <br>
+        <select>
+            <option value="美洲">美洲</option>
+            <option value="亚洲">亚洲</option>
+            <option value="欧洲">欧洲</option>
+        </select>
+        <br>
+        <div id="father">我是一个div</div><br>
+        <span>我是mysql<b>数据库</b></span>
+        <span>我是jdbc</span>
+        <br>
+        <input type="text" value="刘备"><br>
+        <input type="text" value="关羽"><br>
+        <input type="text" value="张飞"><br>
+        <input type="button" value="使用remove删除所有对象" id="btn1"><br>
+        <input type="button" value="使用empty删除子对象" id="btn2"><br>
+        <input type="button" value="使用append增加dom对象" id="btn3"><br>
+        <input type="button" value="获取第一个dom的文本值" id="btn4"><br>
+        <input type="button" value="设置span所有dom的文本值" id="btn5"><br>
+        <input type="button" value="循环普通数组" id="btn6"><br>
+        <input type="button" value="循环json数组" id="btn7"><br>
+        <input type="button" value="循环dom数组" id="btn8"><br>
+        <input type="button" value="循环jQuery对象" id="btn9"><br>
+    </body>
+</html>
